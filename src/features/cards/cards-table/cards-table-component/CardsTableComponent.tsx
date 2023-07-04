@@ -1,7 +1,4 @@
-import React, { FC } from "react";
-import { PackTableComponent } from "features/packs/packs-table/pack-table-component/PackTableComponent";
-import { useIsLoadingApp } from "app/hooks/useIsLoadingApp";
-import { useCardsQueryParams } from "common/hooks/useCardsQueryParams";
+import React, { FC, memo } from "react";
 import TableContainer from "@mui/material/TableContainer";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
@@ -11,45 +8,46 @@ import TableCell from "@mui/material/TableCell";
 import IconButton from "@mui/material/IconButton";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropUp";
-import { PackTableBody } from "features/packs/packs-table/pack-table-body/PackTableBody";
 import { CardsTableBody } from "features/cards/cards-table/cards-table-body/CardsTableBody";
 
 
-type CardsTableComponentType={
-  disabled?:boolean,
-  tableCellForHeader:string[],
-  sort:boolean,
+type CardsTableComponentType = {
+  disabled?: boolean,
+  tableCellForHeader: string[],
+  sort: boolean,
   setSort: (value: boolean) => void
   sortCardsHandler: () => void;
 }
 
-export const CardsTableComponent:FC<CardsTableComponentType> = ({disabled,
-                                                                  tableCellForHeader,
-                                                                  sort,
-                                                                  setSort,
-                                                                  sortCardsHandler}) => {
+export const CardsTableComponent: FC<CardsTableComponentType> = memo(({
+                                                                        disabled,
+                                                                        tableCellForHeader,
+                                                                        sort,
+                                                                        setSort,
+                                                                        sortCardsHandler
+                                                                      }) => {
   const tableHeaderSX = {
-    ordWrap: 'break-word',
-    minWidth: '150px',
-    maxWidth: '200px',
-    wordBreak: 'break-all'
-  }
+    ordWrap: "break-word",
+    minWidth: "150px",
+    maxWidth: "200px",
+    wordBreak: "break-all"
+  };
 
-  const onclickSortHandler=()=>{
-    sortCardsHandler()
-    setSort(!sort)
-  }
+  const onclickSortHandler = () => {
+    sortCardsHandler();
+    setSort(!sort);
+  };
 
 
   return (
-    <TableContainer component={Paper} sx={{marginTop:"30px", marginBottom:"30px"}}>
-      <Table sx={{ minWidth: '650px' }}>
+    <TableContainer component={Paper} sx={{ marginTop: "30px", marginBottom: "30px" }}>
+      <Table sx={{ minWidth: "650px" }}>
         <TableHead>
-          <TableRow sx={{ background: '#EFEFEF' }}>
+          <TableRow sx={{ background: "#EFEFEF" }}>
             {tableCellForHeader.map(textHead => (
               <TableCell sx={tableHeaderSX} key={textHead}>
                 {textHead}
-                {textHead === 'Last Updated' && (
+                {textHead === "Last Updated" && (
                   <IconButton disabled={disabled} onClick={onclickSortHandler}>
                     {sort ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
                   </IconButton>
@@ -58,25 +56,9 @@ export const CardsTableComponent:FC<CardsTableComponentType> = ({disabled,
             ))}
           </TableRow>
         </TableHead>
-<CardsTableBody/>
+        <CardsTableBody />
       </Table>
     </TableContainer>
   );
-};
+});
 
-export const CardsTable=()=>{
-  const {isLoadingApp}=useIsLoadingApp()
-  const {sort,setSort,sortCardsHandler}=useCardsQueryParams()
-  return (
-    <>
-      <CardsTableComponent
-        disabled={isLoadingApp}
-        tableCellForHeader={["Question", "Answer", "Last Updated", "Grade"]}
-        sort={sort}
-        setSort={setSort}
-        sortCardsHandler={sortCardsHandler}
-      />
-
-    </>
-  );
-}

@@ -5,16 +5,16 @@ import FormControl from "@mui/material/FormControl";
 import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
 
 export const Grades = () => {
-  const grades = ['Did not know', 'Forgot', 'A lot of thought', 'Confused', 'Knew the answer']
-  const dispatch = useAppDispatch()
+  const grades = ["Did not know", "Forgot", "A lot of thought", "Confused", "Knew the answer"];
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(learnAction.setGrade(1))
-  }, [])
+    dispatch(learnAction.setGrade(1));
+  }, []);
 
   const onChangeGrade = (grade: number) => {
-    dispatch(learnAction.setGrade(grade + 1))
-  }
+    dispatch(learnAction.setGrade(grade + 1));
+  };
 
   return (
     <FormControl>
@@ -35,7 +35,7 @@ export const Grades = () => {
         ))}
       </RadioGroup>
     </FormControl>
-  )
-}
+  );
+};
 
 

@@ -1,0 +1,17 @@
+.input {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 25px;
+}
+
+.checkbox {
+    margin-top: 25px;
+}
+
+.button {
+    display: flex;
+    justify-content: space-around;
+
+    margin-top: 25px;
+}

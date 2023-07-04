@@ -1,58 +1,54 @@
-import { Modal, IconButton } from "@mui/material";
+import React, { FC, ReactNode } from "react";
+
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import { useState } from "react";
-import Button from "@mui/material/Button";
-import CloseIcon from '@mui/icons-material/Close';
+import Modal from "@mui/material/Modal";
 
-export const ModalComponent = () => {
-  const [open, setOpen] = useState(false);
+import s from "./ModalComponent.module.css";
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+const style = {
+  position: "absolute" as "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 395,
+  bgcolor: "background.paper",
+  borderRadius: "5px",
+  boxShadow: 24
+};
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const style = {
-    position: "absolute" as "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "1px solid #000",
-    boxShadow: 24,
-    pt: 2,
-    px: 4,
-    pb: 3,
+type BoxCardModalPropsType = {
+  title: string
+  open: boolean
+  handleClose: (open: boolean) => void
+  reset?: () => void
+  children: ReactNode
+}
+export const ModalComponent: FC<BoxCardModalPropsType> = ({
+                                                            title,
+                                                            open,
+                                                            handleClose,
+                                                            reset,
+                                                            children
+                                                          }) => {
+  const handleCloseReset = () => {
+    reset && reset();
+    handleClose(false);
   };
 
   return (
-    <>
-      <Button onClick={handleOpen}>Open modal</Button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <IconButton onClick={handleClose}>
-              <CloseIcon />
-            </IconButton>
-          </Box>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
-        </Box>
-      </Modal>
-    </>
+    <Modal open={open} onClose={handleCloseReset}>
+      <Box sx={style}>
+        <div className={s.contentBox}>
+          <div className={s.title}>
+            <div>{title}</div>
+            <div className={s.cross} onClick={handleCloseReset}>
+              +
+            </div>
+          </div>
+          <div className={s.line}></div>
+          <div className={s.form}> {children} </div>
+        </div>
+      </Box>
+    </Modal>
   );
 };

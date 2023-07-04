@@ -1,0 +1,30 @@
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto;
+}
+
+.profileContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 80%;
+    margin: 0 auto;
+}
+
+.title {
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 32px;
+}
+
+.logoutImg {
+    margin-right: 5px;
+}

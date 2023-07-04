@@ -1,31 +1,17 @@
-import React, { FC, useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "app/hooks";
+import React, { useEffect } from "react";
+import { useAppDispatch } from "app/hooks";
 import { packsAction, packsThunks } from "features/packs/packs.slice";
 import { usePacksQueryParams } from "common/hooks/usePacksQueryParams";
-import { CardsCountSlider } from "common/components/slider/CardsCountSlider";
-import { SearchInput } from "common/components/inputs/search-input/SearchInput";
-import { ButtonComponent } from "common/components/buttons/ButtonComponent";
 import { PacksTable } from "features/packs/packs-table/PacksTable";
-import { isLoadingPacksSelector } from "features/packs/packsSelector";
-import { LinearProgress } from "@mui/material";
-import { ModalComponent } from "common/components/modal/ModalComponent";
-import FilterAltOffIcon from "@mui/icons-material/FilterAltOff";
-import IconButton from "@mui/material/IconButton";
 import { FilterPanel } from "features/packs/packs-filter-panel/FilterPanel";
+import { PackHeader } from "features/packs/packs-table/PackHeader";
 
 
-export const PacksMain = () => {
+export const Packs = () => {
 
-  const {
-    onChangeSlider,
-    setValueSlider,
-    valueSlider,
-    searchParams,
-    search,
-    onChangeText, resetFilters
-  } = usePacksQueryParams();
+  const { searchParams } = usePacksQueryParams();
   const paramsSearch = Object.fromEntries(searchParams);
-  const isLoading = useAppSelector(isLoadingPacksSelector);
+
   const dispatch = useAppDispatch();
 
 
@@ -34,32 +20,34 @@ export const PacksMain = () => {
     dispatch(packsThunks.getPacks());
   }, [dispatch]);
 
-  const addPackHandler = () => {
-    const newPack = {
-      name: "🦁" + Math.random()
-    };
-    dispatch(packsThunks.createPack(newPack));
-  };
-
-  if (isLoading) {
-    return <LinearProgress />;
-  }
 
   return (
     <>
-      <ModalComponent />
-      <ButtonComponent onClick={addPackHandler}>
-        Add new pack
-      </ButtonComponent>
-
-     <FilterPanel>
-       <PacksTable/>
-     </FilterPanel>
+      <PackHeader />
+      <FilterPanel>
+        <PacksTable />
+      </FilterPanel>
     </>
-
 
   );
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

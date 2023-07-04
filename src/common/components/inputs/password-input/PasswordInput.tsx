@@ -1,14 +1,13 @@
-import { FC, memo } from 'react'
-
-import Visibility from '@mui/icons-material/Visibility'
-import VisibilityOff from '@mui/icons-material/VisibilityOff'
-import FormControl from '@mui/material/FormControl'
-import IconButton from '@mui/material/IconButton'
-import Input from '@mui/material/Input'
-import InputAdornment from '@mui/material/InputAdornment'
-import InputLabel from '@mui/material/InputLabel'
-import { useShowPassword } from '../../hooks/useShowPassword'
-import s from './PasswordInput.module.css'
+import { FC, memo } from "react";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import FormControl from "@mui/material/FormControl";
+import IconButton from "@mui/material/IconButton";
+import Input from "@mui/material/Input";
+import InputAdornment from "@mui/material/InputAdornment";
+import InputLabel from "@mui/material/InputLabel";
+import { useShowPassword } from "common/hooks/useShowPassword";
+import s from "common/components/inputs/password-input/PasswordInput.module.css";
 
 type PasswordInputProps = {
   id: string

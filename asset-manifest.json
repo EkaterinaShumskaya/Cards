@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/Cards/static/css/main.df44d676.css",
+    "main.js": "/Cards/static/js/main.fc8b0645.js",
+    "static/js/787.8517b185.chunk.js": "/Cards/static/js/787.8517b185.chunk.js",
+    "static/media/404.svg": "/Cards/static/media/404.9ec31c0ba8d95b0480272e46af98c955.svg",
+    "static/media/emailImg.svg": "/Cards/static/media/emailImg.9c85131df94a16b8c5bb22911d3653dd.svg",
+    "static/media/incubator-logo.svg": "/Cards/static/media/incubator-logo.3c09153556dc0fef65c4fc532ee16562.svg",
+    "static/media/delete.svg": "/Cards/static/media/delete.cdf927ab47ba8e66367865788491d942.svg",
+    "static/media/edit.svg": "/Cards/static/media/edit.a3635b25c9795d382bfd51057af51505.svg",
+    "static/media/edit-2.svg": "/Cards/static/media/edit-2.1241cb07d4b7fab769c1b45b2a467ada.svg",
+    "static/media/learn.svg": "/Cards/static/media/learn.fc5742d81ad091684bee3b5a7f929f1f.svg",
+    "static/media/no-image.svg": "/Cards/static/media/no-image.ee103990b2f6a9c970f0dec66f362fef.svg",
+    "static/media/find.svg": "/Cards/static/media/find.f161824b0f966009030ecc36ea634309.svg",
+    "index.html": "/Cards/index.html",
+    "static/media/logout.svg": "/Cards/static/media/logout.4631dbd136b384a8118857f16dae43d5.svg",
+    "main.df44d676.css.map": "/Cards/static/css/main.df44d676.css.map",
+    "main.fc8b0645.js.map": "/Cards/static/js/main.fc8b0645.js.map",
+    "787.8517b185.chunk.js.map": "/Cards/static/js/787.8517b185.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.df44d676.css",
+    "static/js/main.fc8b0645.js"
+  ]
+}
